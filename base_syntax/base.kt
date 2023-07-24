@@ -1,3 +1,5 @@
+package kotlinRaf.base_syntax
+
 //Основы kotlin
 fun main() {
     // переменные
@@ -69,18 +71,16 @@ fun main() {
     else println(false)
 
     //2. when (в java - switch-case)
-    when (a) {
-        1 -> println(1) // если а=1, то выводим 1
-        2 -> println(2) // если а=2, то выводим 2
-        in 3..10 -> println("""
-            выражение in 3..10 - диапазон
-            a = $a находится в диапазоне 3..10 (от 3 до 10)"
-            """.trimMargin())
-        in 11..20 -> println("""
-            выражение in 11..20 - диапазон
-            a = $a находится в диапазоне 11..20 (от 11 до 20)"
-            """.trimMargin())
-
+    val nm = 25
+    when(nm) {
+        1 -> println(1)
+        2 -> println(2)
+        3 -> println(3)
+        in 4..10 -> (4..10).forEach { print("$it ") }
+        in 11..20 -> (11..20).forEach { print("$it ") } // так быстрее работает
+        in 21..30 -> {
+            for (i in 21..30) print("$i ") // так дольше работает и выглядит тупо
+        }
     }
 
     // диапазоны
@@ -124,8 +124,9 @@ fun main() {
     for(c in 1..9 step 2) print(c)  // 13579
 
     // массивы (списки)
-    var list = listOf(1, 2, 3, 4, 5)
-    for (i in 0..list.size-1) println(list[i])
+    var l = listOf(1, 2, 3, 4, 5)
+    for (i in 0..l.size - 1) println(l[i])
+    for (i in 0 until l.size) println(l[i])
 
     val numbers: Array<Int> = arrayOf(1, 2, 3, 4, 5)
     // С помощью встроенной функции arrayOf() можно передать набор значений,
